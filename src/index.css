@@ -1,0 +1,198 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+
+  .glass-effect {
+    @apply backdrop-blur-md bg-white/80 border border-white/20 shadow-sm;
+  }
+  
+  .glass-effect-dark {
+    @apply backdrop-blur-md bg-black/10 border border-white/10 shadow-md;
+  }
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .transition-all-fast {
+    @apply transition-all duration-200 ease-in-out;
+  }
+
+  .transition-all-medium {
+    @apply transition-all duration-300 ease-in-out;
+  }
+}
+
+/* Platform-specific brand colors */
+.platform-blinkit {
+  color: theme('colors.platform.blinkit');
+  border-color: theme('colors.platform.blinkit');
+}
+
+.platform-zepto {
+  color: theme('colors.platform.zepto');
+  border-color: theme('colors.platform.zepto');
+}
+
+.platform-swiggy {
+  color: theme('colors.platform.swiggy');
+  border-color: theme('colors.platform.swiggy');
+}
+
+.platform-bigbasket {
+  color: theme('colors.platform.bigbasket');
+  border-color: theme('colors.platform.bigbasket');
+}
+
+.platform-dunzo {
+  color: theme('colors.platform.dunzo');
+  border-color: theme('colors.platform.dunzo');
+}
+
+.bg-platform-blinkit {
+  background-color: theme('colors.platform.blinkit');
+  color: white;
+}
+
+.bg-platform-zepto {
+  background-color: theme('colors.platform.zepto');
+  color: white;
+}
+
+.bg-platform-swiggy {
+  background-color: theme('colors.platform.swiggy');
+  color: white;
+}
+
+.bg-platform-bigbasket {
+  background-color: theme('colors.platform.bigbasket');
+  color: white;
+}
+
+.bg-platform-dunzo {
+  background-color: theme('colors.platform.dunzo');
+  color: white;
+}
+
+/* Custom Animations */
+.hover-scale {
+  @apply transition-transform duration-200 hover:scale-[1.03];
+}
+
+.hover-lift {
+  @apply transition-all duration-200 hover:-translate-y-[2px] hover:shadow-md;
+}
+
+.delayed-fade-in {
+  opacity: 0;
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+.staggered-children > *:nth-child(1) { animation-delay: 0.1s; }
+.staggered-children > *:nth-child(2) { animation-delay: 0.2s; }
+.staggered-children > *:nth-child(3) { animation-delay: 0.3s; }
+.staggered-children > *:nth-child(4) { animation-delay: 0.4s; }
+.staggered-children > *:nth-child(5) { animation-delay: 0.5s; }
+.staggered-children > *:nth-child(6) { animation-delay: 0.6s; }
+.staggered-children > *:nth-child(7) { animation-delay: 0.7s; }
+.staggered-children > *:nth-child(8) { animation-delay: 0.8s; }
+
+/* Page Transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 300ms, transform 300ms;
+}
+
+/* Custom Components */
+.product-card {
+  @apply relative bg-white rounded-xl overflow-hidden shadow-sm border border-border/40 hover:shadow-md hover:border-border/60 transition-all duration-200;
+}
+
+.platform-badge {
+  @apply inline-flex items-center justify-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.category-button {
+  @apply px-4 py-2 rounded-full bg-secondary hover:bg-secondary/80 font-medium transition-colors;
+}
+
+.category-button.active {
+  @apply bg-primary text-primary-foreground;
+}
